@@ -1,0 +1,8 @@
+{
+    "matches": "https://api.fifa.com/api/v3/calendar/matches?language=en&count=500&idSeason=255711",
+    "group": "https://cxm-api.fifa.com/fifaplusweb/api/sections/tournamentGroupOverview/15xDmWzQAu51lEIjP4fVfz?locale=en",
+    "stadium": "https://cxm-api.fifa.com/fifaplusweb/api/sections/portraitCarousel/4b0QLgOgdGrLB0IhsNHSV1?locale=en",
+    "matchday": "https://cxm-api.fifa.com/fifaplusweb/api/sections/matches/competitionslist/3jlHZVPUI0eeeBFTX9qSZ1?locale=en&date=2022-08-20&timezoneoffset=-420",
+    "live": "https://api.fifa.com/api/v3/watch/season/255711/VN?language=en",
+    "standing": "https://api.fifa.com/api/v3/calendar/17/255711/285063/standing?language=en"
+}

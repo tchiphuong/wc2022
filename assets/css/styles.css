@@ -1,0 +1,23 @@
+.text-primary {
+    color: #9a1032;
+}
+
+.bg-primary {
+    color: #9a1032;
+}
+
+@font-face {
+    font-family: "Qatar2022Arabic";
+    src: url("../fonts/Qatar2022Arabic-Bold.eot"); /* IE9 Compat Modes */
+    src: url("../fonts/Qatar2022Arabic-Bold.eot?#iefix") format("embedded-opentype"),
+        /* IE6-IE8 */ url("../fonts/Qatar2022Arabic-Bold.woff2") format("woff2"),
+        /* Super Modern Browsers */ url("../fonts/Qatar2022Arabic-Bold.woff") format("woff"),
+        /* Pretty Modern Browsers */ url("../fonts/Qatar2022Arabic-Bold.ttf") format("truetype"),
+        /* Safari, Android, iOS */ url("../fonts/Qatar2022Arabic-Bold.svg#svgFontName")
+            format("svg"); /* Legacy iOS */
+}
+body {
+    /* font-family: 'Lato', sans-serif; */
+    /* font-family: 'Mate SC', serif; */
+    font-family: "Qatar2022Arabic", sans-serif !important;
+}
