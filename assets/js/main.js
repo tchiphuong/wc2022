@@ -11,7 +11,7 @@ $(function () {
         success: callAPI,
     });
 
-    let worldcup = new WorldCup(lstUrl);
+    new WorldCup(lstUrl);
     $("#list-group li").on("click", function () {
         $(this)
             .parents("ul")
@@ -34,13 +34,99 @@ $(function () {
 class WorldCup {
     constructor(lstUrl) {
         this.lstUrl = lstUrl;
-        this.GetGroup(this.lstUrl.group);
-        this.GetStanding(this.lstUrl.standing);
+        this.GetGroup(this.lstUrl.group.url);
+        this.GetStanding(this.lstUrl.standing.url);
+        this.GetFixture(this.lstUrl.fixture.url);
     }
-    GetGroup(lstUrl) {
+    GetFixture(url) {
         $.ajax({
             type: "get",
-            url: lstUrl,
+            url: url,
+            async: false,
+            dataType: "json",
+            success: function (response) {
+                //console.log(response.Results);
+                $("#fixtures").empty();
+                response.Results.forEach((element) => {
+                    console.log(element.Home.PictureUrl);
+                    $("#fixtures").append(`
+                        <li class="relative">
+                            <button data-dropdown-toggle="${element.IdMatch}"
+                                class="text-white w-full font-medium rounded-lg text-sm text-center inline-flex items-center text-gray-800 border-gray-200 rounded-t-xl dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800"
+                                type="button">
+                                <div
+                                    class="block w-full p-6 pt-0 bg-white border border-gray-200 rounded-lg shadow-md relative hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                                    <div class="text-lg my-4 pb-2 border-b-2">${
+                                        element.GroupName[0].Description
+                                    }</div>
+                                    <div class="flex">
+                                        <div class="w-4/12 flex flex-col items-center">
+                                            <img class="md:h-8 h-10 border border-yellow-500" src="${element.Home.PictureUrl.replace(
+                                                "{size}",
+                                                4
+                                            ).replace("{format}", "sq")}"
+                                                alt="">
+                                            <span class="md:text-sm text-md p-2">${
+                                                element.Home.ShortClubName
+                                            }</span>
+                                        </div>
+                                        <div class="flex-grow flex items-center justify-center hidden">
+                                            <span class="md:text-lg text-3xl p-1">0</span>
+                                            <span class="md:text-lg text-3xl p-1">-</span>
+                                            <span class="md:text-lg text-3xl p-1">0</span>
+                                        </div>
+                                        <div class="flex-grow flex flex-col items-center justify-center">
+                                            <span class="md:text-lg text-3xl p-1 pb-0">${moment(
+                                                element.Date
+                                            ).format("L")}</span>
+                                            <span class="md:text-lg text-3xl p-1">${moment(
+                                                element.Date
+                                            ).format("LT")}</span>
+                                        </div>
+                                        <div class="w-4/12 flex flex-col items-center">
+                                            <img class="md:h-8 h-10 border border-yellow-500" src="${element.Away.PictureUrl.replace(
+                                                "{size}",
+                                                4
+                                            ).replace("{format}", "sq")}"
+                                                alt="">
+                                            <span class="md:text-sm text-md p-2">${
+                                                element.Away.ShortClubName
+                                            }</span>
+                                        </div>
+                                    </div>
+                                    <span class="bg-red-100 text-red-800 text-xs font-semibold mr-2 px-2.5 py-0.5 top-4 left-3 rounded dark:bg-red-200 dark:text-red-900 absolute">LIVE</span>
+                                </div>
+                            </button>
+                            <div id="${element.IdMatch}"
+                                class="hidden z-10 inset-x-0 w-auto bg-white rounded-lg w-full divide-y divide-gray-100 shadow dark:bg-gray-700">
+                                <div class="p-5 text-gray-700 dark:text-gray-200">
+                                    <div>
+                                        <h1 class="uppercase text-center">Line up</h1>
+                                        <div class="flex h-20">
+                                            <div class="w-1/2"></div>
+                                            <div class="w-1/2"></div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h1 class="uppercase text-center">substitute</h1>
+                                        <div class="flex h-20">
+                                            <div class="w-1/2"></div>
+                                            <div class="w-1/2"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    `);
+                });
+            },
+        });
+    }
+
+    GetGroup(url) {
+        $.ajax({
+            type: "get",
+            url: url,
             async: false,
             dataType: "json",
             success: function (response) {
@@ -78,30 +164,32 @@ class WorldCup {
                                     <thead
                                         class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                         <tr>
+                                            <th scope="col" class="py-3 px-3 text-center"></th>
+                                            <th scope="col" class="py-3 px-3 text-center"></th>
                                             <th scope="col" class="py-3 px-3 text-center">
-
+                                                <span class="md:hidden">P</span>
+                                                <span class="hidden md:block">Played</span>
                                             </th>
                                             <th scope="col" class="py-3 px-3 text-center">
-
+                                                <span class="md:hidden">W</span>
+                                                <span class="hidden md:block">Won</span>
                                             </th>
                                             <th scope="col" class="py-3 px-3 text-center">
-                                                P
-                                            </th>
-                                            <th scope="col" class="py-3 px-3 text-center">
-                                                W
-                                            </th>
-                                            <th scope="col" class="py-3 px-3 text-center">
-                                                D
+                                                <span class="md:hidden">D</span>
+                                                <span class="hidden md:block">Drawn</span>
                                             </th>
                                             </th>
                                             <th scope="col" class="py-3 px-3 text-center">
-                                                L
+                                                <span class="md:hidden">L</span>
+                                                <span class="hidden md:block">Lost</span>
                                             </th>
                                             <th scope="col" class="py-3 px-3 text-center">
-                                                GD
+                                                <span class="md:hidden">GD</span>
+                                                <span class="hidden md:block">Goals Diference</span>
                                             </th>
                                             <th scope="col" class="py-3 px-3 text-center">
-                                                Pst
+                                                <span class="md:hidden">Pst</span>
+                                                <span class="hidden md:block">Points</span>
                                             </th>
                                         </tr>
                                     </thead>
@@ -115,10 +203,10 @@ class WorldCup {
             },
         });
     }
-    GetStanding(lstUrl) {
+    GetStanding(url) {
         $.ajax({
             type: "get",
-            url: lstUrl,
+            url: url,
             async: false,
             dataType: "json",
             success: function (response) {
@@ -139,22 +227,22 @@ class WorldCup {
                                 <span class="px-2">${element.Team.Name[0].Description}</span>
                             </th>
                             <td class="py-4 px-3 text-center">
-                                0
+                                ${element.Played}
                             </td>
                             <td class="py-4 px-3 text-center">
-                                0
+                                ${element.Won}
                             </td>
                             <td class="py-4 px-3 text-center">
-                                0
+                                ${element.Drawn}
                             </td>
                             <td class="py-4 px-3 text-center">
-                                0
+                                ${element.Lost}
                             </td>
                             <td class="py-4 px-3 text-center">
-                                0
+                                ${element.GoalsDiference}
                             </td>
                             <td class="py-4 px-3 text-center">
-                                0
+                                ${element.Points}
                             </td>
                         </tr>
                     `);

@@ -8,11 +8,12 @@
     <title>World Cup 2022</title>
     <!-- <script src="https://cdn.tailwindcss.com"></script> -->
     <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.3/dist/flowbite.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.10/tailwind.min.css" />
     <link rel="stylesheet" href="./assets/css/styles.css">
 </head>
 
-<body>
-    <nav class="bg-gray-50 border-gray-200 px-2 md:px-4 py-2.5 dark:bg-gray-900 fixed w-full">
+<body">
+    <nav class="bg-gray-50 border-gray-200 px-2 md:px-4 py-2.5 dark:bg-gray-900 fixed w-full z-20">
         <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
             <a href="#" class="flex items-center">
                 <img src="./assets/img/logo.png" class="mr-3 h-6 sm:h-9" alt="Flowbite Logo">
@@ -55,16 +56,67 @@
     </nav>
 
     <div class="container px-2 pt-16 mx-auto">
-        <section id="group">
-            <h1 class="font-bold py-2 px-1">Groups</h1>
+        <section id="group" class="mb-4">
+            <h1 class="font-bold py-2 px-1 text-2xl">Groups</h1>
             <ul id="list-group"
                 class="flex flex-wrap text-sm font-medium text-center text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400">
             </ul>
             <ul id="list-stading"></ul>
         </section>
+
+        <section id="group" class="mb-4">
+            <h1 class="font-bold py-2 px-1 text-2xl">Fixtures</h1>
+            <ul id="fixtures" class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-3 ld:gap-4">
+                <!-- <li class="relative">
+                    <button data-dropdown-toggle="dropdown"
+                        class="text-white w-full font-medium rounded-lg text-sm text-center inline-flex items-center text-gray-800 border-gray-200 rounded-t-xl dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800"
+                        type="button">
+                        <div
+                            class="block w-full p-6 bg-white border border-gray-200 rounded-lg shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                            <div class="flex">
+                                <div class="w-4/12 flex flex-col items-center">
+                                    <img class="h-10 border border-yellow-500"
+                                        src="https://cdn-icons-png.flaticon.com/512/323/323319.png" alt="">
+                                    <span class="text-lg">Team A</span>
+                                </div>
+                                <div class="flex-grow flex items-center justify-center">
+                                    <span class="text-4xl p-1">0</span>
+                                    <span class="text-4xl p-1">-</span>
+                                    <span class="text-4xl p-1">0</span>
+                                </div>
+                                <div class="w-4/12 flex flex-col items-center">
+                                    <img class="h-10 border border-yellow-500"
+                                        src="https://cdn-icons-png.flaticon.com/512/323/323319.png" alt="">
+                                    <span class="text-lg">Team B</span>
+                                </div>
+                            </div>
+                        </div>
+                    </button>
+                    <div id="dropdown"
+                        class="hidden z-10 inset-x-0 w-auto bg-white rounded-lg  w-full divide-y divide-gray-100 shadow dark:bg-gray-700">
+                        <div class="p-5 text-gray-700 dark:text-gray-200">
+                            <div>
+                                <h1 class="uppercase text-center">Line up</h1>
+                                <div class="flex h-20">
+                                    <div class="w-1/2 bg-red-400"></div>
+                                    <div class="w-1/2 bg-yellow-400"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <h1 class="uppercase text-center">substitute</h1>
+                                <div class="flex h-20">
+                                    <div class="w-1/2 bg-red-400"></div>
+                                    <div class="w-1/2 bg-yellow-400"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li> -->
+            </ul>
+        </section>
     </div>
 
-    <div class="absolute inset-0 h-screen flex items-center justify-center backdrop-blur-sm bg-white/30 cursor-pointer"
+    <!-- <div class="absolute inset-0 h-screen flex items-center justify-center backdrop-blur-sm bg-white/30 cursor-pointer"
         id="spin">
         <div role="status">
             <svg class="inline mr-2 w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
@@ -78,12 +130,13 @@
             </svg>
             <span class="sr-only">Loading...</span>
         </div>
-    </div>
+    </div> -->
 
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <script src="https://unpkg.com/flowbite@1.5.3/dist/flowbite.js"></script>
     <script src="./assets/js/ajax.js"></script>
     <script src="./assets/js/main.js"></script>
-</body>
+    </body>
 
 </html>
