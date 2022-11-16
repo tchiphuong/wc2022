@@ -11,7 +11,7 @@ $(function () {
         success: callAPI,
     });
 
-    new WorldCup(lstUrl);
+    const wc = new WorldCup(lstUrl);
     $("#list-group li").on("click", function () {
         $(this)
             .parents("ul")
