@@ -11,7 +11,7 @@ $(function () {
         success: callAPI,
     });
 
-    const wc = new WorldCup(lstUrl);
+    new WorldCup(lstUrl);
     $("#list-group li").on("click", function () {
         $(this)
             .parents("ul")
@@ -27,7 +27,7 @@ $(function () {
                 "hover:text-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 dark:hover:text-gray-300"
             );
         $("#list-stading li").hide();
-        $(`${$(this).find("a").attr("href")}`).show();
+        $(`${$(this).find("a").attr("target-link")}`).show();
     });
 });
 
@@ -45,10 +45,8 @@ class WorldCup {
             async: false,
             dataType: "json",
             success: function (response) {
-                //console.log(response.Results);
                 $("#fixtures").empty();
                 response.Results.forEach((element) => {
-                    console.log(element.Home.PictureUrl);
                     $("#fixtures").append(`
                         <li class="relative">
                             <button data-dropdown-toggle="${element.IdMatch}"
@@ -57,44 +55,58 @@ class WorldCup {
                                 <div
                                     class="block w-full p-6 pt-0 bg-white border border-gray-200 rounded-lg shadow-md relative hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
                                     <div class="text-lg my-4 pb-2 border-b-2">${
-                                        element.GroupName[0].Description
+                                        element.GroupName.length > 0
+                                            ? element.GroupName[0].Description
+                                            : element.StageName[0].Description
                                     }</div>
                                     <div class="flex">
                                         <div class="w-4/12 flex flex-col items-center">
-                                            <img class="md:h-8 h-10 border border-yellow-500" src="${element.Home.PictureUrl.replace(
-                                                "{size}",
-                                                4
-                                            ).replace("{format}", "sq")}"
+                                            <img class="md:h-8 h-10 border border-yellow-500" src="${
+                                                element.Home !== null
+                                                    ? element.Home.PictureUrl.replace(
+                                                          "{size}",
+                                                          4
+                                                      ).replace("{format}", "sq")
+                                                    : "../assets/img/undefined-img.png"
+                                            }"
                                                 alt="">
                                             <span class="md:text-sm text-md p-2">${
-                                                element.Home.ShortClubName
+                                                element.Home !== null
+                                                    ? element.Home.ShortClubName
+                                                    : ""
                                             }</span>
                                         </div>
-                                        <div class="flex-grow flex items-center justify-center hidden">
-                                            <span class="md:text-lg text-3xl p-1">0</span>
-                                            <span class="md:text-lg text-3xl p-1">-</span>
-                                            <span class="md:text-lg text-3xl p-1">0</span>
+                                        <div class="flex-grow flex items-center justify-center">
+                                            <span class="md:text-lg lg:text-2xl text-3xl p-1">0</span>
+                                            <span class="md:text-lg lg:text-2xl text-3xl p-1">-</span>
+                                            <span class="md:text-lg lg:text-2xl text-3xl p-1">0</span>
                                         </div>
-                                        <div class="flex-grow flex flex-col items-center justify-center">
-                                            <span class="md:text-lg text-3xl p-1 pb-0">${moment(
+                                        <div class="flex-grow flex flex-col items-center justify-center hidden">
+                                            <span class="text-lg p-1 pb-0">${moment(
                                                 element.Date
                                             ).format("L")}</span>
-                                            <span class="md:text-lg text-3xl p-1">${moment(
-                                                element.Date
-                                            ).format("LT")}</span>
+                                            <span class="text-md p-1">${moment(element.Date).format(
+                                                "LT"
+                                            )}</span>
                                         </div>
                                         <div class="w-4/12 flex flex-col items-center">
-                                            <img class="md:h-8 h-10 border border-yellow-500" src="${element.Away.PictureUrl.replace(
-                                                "{size}",
-                                                4
-                                            ).replace("{format}", "sq")}"
+                                            <img class="md:h-8 h-10 border border-yellow-500" src="${
+                                                element.Away !== null
+                                                    ? element.Away.PictureUrl.replace(
+                                                          "{size}",
+                                                          4
+                                                      ).replace("{format}", "sq")
+                                                    : "../assets/img/undefined-img.png"
+                                            }"
                                                 alt="">
                                             <span class="md:text-sm text-md p-2">${
-                                                element.Away.ShortClubName
+                                                element.Away !== null
+                                                    ? element.Away.ShortClubName
+                                                    : ""
                                             }</span>
                                         </div>
                                     </div>
-                                    <span class="bg-red-100 text-red-800 text-xs font-semibold mr-2 px-2.5 py-0.5 top-4 left-3 rounded dark:bg-red-200 dark:text-red-900 absolute">LIVE</span>
+                                    <a href="../live" class="bg-red-100 text-red-800 text-xs font-semibold mr-2 px-2.5 py-0.5 top-4 left-3 rounded dark:bg-red-200 dark:text-red-900 absolute">LIVE</a>
                                 </div>
                             </button>
                             <div id="${element.IdMatch}"
@@ -135,8 +147,8 @@ class WorldCup {
                 response.groups.forEach((element, index) => {
                     if (index == 0) {
                         $("#list-group").append(`
-                        <li class="mr-2">
-                            <a href="#${element.groupTitle
+                        <li class="mr-2 cursor-pointer">
+                            <a target-link="#${element.groupTitle
                                 .replace(" ", "-")
                                 .toLowerCase()}" class="inline-block p-4 text-blue-600 bg-gray-100 rounded-t-lg active dark:bg-gray-800 dark:text-blue-500"><span class="md:hidden">${element.groupTitle.replace(
                             "Group ",
@@ -146,8 +158,8 @@ class WorldCup {
                         `);
                     } else {
                         $("#list-group").append(`
-                        <li class="mr-2">
-                            <a href="#${element.groupTitle
+                        <li class="mr-2 cursor-pointer">
+                            <a target-link="#${element.groupTitle
                                 .replace(" ", "-")
                                 .toLowerCase()}" class="inline-block p-4 rounded-t-lg hover:text-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 dark:hover:text-gray-300"><span class="md:hidden">${element.groupTitle.replace(
                             "Group ",
