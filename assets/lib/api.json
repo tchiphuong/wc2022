@@ -30,5 +30,14 @@
     "match": {
         "url": "https://api.fifa.com/api/v3/calendar/17/255711/400235458?language=en",
         "description": ""
+    },
+    "team": {
+        "url": "https://api.fifa.com/api/v3/competitions/teams/255711?language=en",
+        "description": ""
+    },
+    "squad": {
+        "url": "https://api.fifa.com/api/v3/teams/",
+        "url1": "/squad?idCompetition=17&idSeason=255711&language=en",
+        "description": ""
     }
 }
