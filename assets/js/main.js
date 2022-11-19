@@ -67,7 +67,7 @@ class WorldCup {
                                                           "{size}",
                                                           4
                                                       ).replace("{format}", "sq")
-                                                    : "../assets/img/undefined-img.png"
+                                                    : "./assets/img/undefined-img.png"
                                             }"
                                                 alt="">
                                             <span class="md:text-sm text-md p-2">${
@@ -96,7 +96,7 @@ class WorldCup {
                                                           "{size}",
                                                           4
                                                       ).replace("{format}", "sq")
-                                                    : "../assets/img/undefined-img.png"
+                                                    : "./assets/img/undefined-img.png"
                                             }"
                                                 alt="">
                                             <span class="md:text-sm text-md p-2">${
