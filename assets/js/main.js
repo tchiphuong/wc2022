@@ -169,7 +169,7 @@ class WorldCup {
                         <li class="mr-2 cursor-pointer">
                             <a target-link="#${element.groupTitle
                                 .replace(" ", "-")
-                                .toLowerCase()}" class="inline-block p-4 text-blue-600 bg-gray-100 rounded-t-lg active dark:bg-gray-800 dark:text-blue-500"><span class="md:hidden">${element.groupTitle.replace(
+                                .toLowerCase()}" class="inline-block p-4 overflow-hidden h-full text-blue-600 bg-gray-100 rounded-t-lg active dark:bg-gray-800 dark:text-blue-500"><span class="md:hidden">${element.groupTitle.replace(
                             "Group ",
                             ""
                         )}</span><span class="hidden md:block">${element.groupTitle}</span></a>
@@ -180,7 +180,7 @@ class WorldCup {
                         <li class="mr-2 cursor-pointer">
                             <a target-link="#${element.groupTitle
                                 .replace(" ", "-")
-                                .toLowerCase()}" class="inline-block p-4 rounded-t-lg hover:text-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 dark:hover:text-gray-300"><span class="md:hidden">${element.groupTitle.replace(
+                                .toLowerCase()}" class="inline-block p-4 overflow-hidden h-full rounded-t-lg hover:text-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 dark:hover:text-gray-300"><span class="md:hidden">${element.groupTitle.replace(
                             "Group ",
                             ""
                         )}</span><span class="hidden md:block">${element.groupTitle}</span></a>
@@ -191,7 +191,7 @@ class WorldCup {
                         index > 0 ? "class='hidden'" : ""
                     }>
                             <div class="overflow-x-auto relative">
-                                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 border dark:border-gray-700">
+                                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 dark:border-gray-700">
                                     <thead
                                         class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                         <tr>
@@ -291,7 +291,7 @@ class WorldCup {
                 response.Results.forEach((element) => {
                     $("#list-team").append(`
                         <li id="${element.IdTeam}"
-                            class="flex flex-col items-center block px-5 py-4 text-sm font-medium text-center rounded-lg shadow cursor-pointer team-item md:py-7 hover:bg-gray-100 dark:text-gray-100 dark:bg-gray-800 dark:hover:bg-gray-700"
+                            class="flex flex-col items-center block px-5 py-4 text-sm font-medium text-center rounded-lg shadow-md border cursor-pointer team-item md:py-7 hover:bg-gray-100 dark:text-gray-100 dark:bg-gray-800 dark:hover:bg-gray-700"
                             type=" button" data-modal-toggle="model-squad">
                             <img class="h-16 border border-yellow-500 md:h-20"
                                 src="${element.PictureUrl.replace("{size}", 4).replace(
