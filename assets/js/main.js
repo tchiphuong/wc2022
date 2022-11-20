@@ -41,7 +41,6 @@ class WorldCup {
         this.GetStanding(this.lstUrl.standing.url);
         this.GetFixture(this.lstUrl.fixture.url);
         this.GetTeam(this.lstUrl.team.url);
-        this.GetChannel(this.lstUrl);
     }
     GetFixture(url) {
         $.ajax({
