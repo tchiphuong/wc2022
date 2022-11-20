@@ -23,3 +23,8 @@ body {
     /* font-family: 'Mate SC', serif; */
     font-family: "Qatar2022Arabic", sans-serif !important;
 }
+.stream-dimensions {
+    height: fit-content;
+    min-height: fit-content;
+    max-height: 600px !important;
+}

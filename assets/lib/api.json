@@ -39,5 +39,148 @@
         "url": "https://api.fifa.com/api/v3/teams/",
         "url1": "/squad?idCompetition=17&idSeason=255711&language=en",
         "description": ""
-    }
+    },
+    "channel": [
+        {
+            "name": "vtv2",
+            "title": "VTV2",
+            "link": [
+                {
+                    "title": "1080p",
+                    "url": "https://vips-livecdn.fptplay.net/hda1/vtv2_vhls.smil/chunklist_b5000000.m3u8?token=",
+                    "description": ""
+                },
+                {
+                    "title": "1080p",
+                    "url": "https://livecdn.fptplay.net/hda1/vtv2_vhls.smil/chunklist_b5000000.m3u8",
+                    "description": ""
+                }
+            ]
+        },
+        {
+            "name": "vtv3",
+            "title": "VTV3",
+            "link": [
+                {
+                    "title": "1080p",
+                    "url": "https://vips-livecdn.fptplay.net/hda1/vtv3hd_hls.smil/chunklist_b2500000.m3u8?token=",
+                    "description": ""
+                },
+                {
+                    "title": "1080p",
+                    "url": "https://livecdn.fptplay.net/hda1/vtv3hd_vhls.smil/chunklist_b5000000.m3u8",
+                    "description": ""
+                }
+            ]
+        },
+        {
+            "name": "vtv5",
+            "title": "VTV5",
+            "link": [
+                {
+                    "title": "1080p",
+                    "url": "https://vips-livecdn.fptplay.net/hda2/vtv5hd_vhls.smil/chunklist_b5000000.m3u8?token=",
+                    "description": ""
+                },
+                {
+                    "title": "1080p",
+                    "url": "https://livecdn.fptplay.net/hda2/vtv5hd_vhls.smil/chunklist_b5000000.m3u8",
+                    "description": ""
+                }
+            ]
+        },
+        {
+            "name": "vtv-can-tho",
+            "title": "VTV Can Tho",
+            "link": [
+                {
+                    "title": "1080p",
+                    "url": "https://vips-livecdn.fptplay.net/hda1/vtv6hd_vhls.smil/chunklist_b2500000.m3u8?token=",
+                    "description": ""
+                },
+                {
+                    "title": "1080p",
+                    "url": "https://livecdn.fptplay.net/hda1/vtvcantho_vhls.smil/chunklist_b5000000.m3u8",
+                    "description": ""
+                }
+            ]
+        },
+        {
+            "name": "tvp-1",
+            "title": "TVP 1",
+            "link": [
+                {
+                    "title": "1080p",
+                    "url": "http://5.182.229.90:8080/7292/tracks-v1a1/mono.m3u8",
+                    "description": ""
+                }
+            ]
+        },
+        {
+            "name": "tvp-2",
+            "title": "TVP 2",
+            "link": [
+                {
+                    "title": "1080p",
+                    "url": "http://5.182.229.90:8080/7293/tracks-v1a1/mono.m3u8",
+                    "description": ""
+                }
+            ]
+        },
+        {
+            "name": "tvp-3",
+            "title": "TVP 3",
+            "link": [
+                {
+                    "title": "1080p",
+                    "url": "http://5.182.229.90:8080/7284/tracks-v1a1/mono.m3u8",
+                    "description": ""
+                }
+            ]
+        },
+        {
+            "name": "tvp-sport",
+            "title": "TVP Sport",
+            "link": [
+                {
+                    "title": "1080p",
+                    "url": "http://5.182.229.90:8080/7280/tracks-v1a1/mono.m3u8",
+                    "description": ""
+                }
+            ]
+        },
+        {
+            "name": "stv1",
+            "title": "STV 1",
+            "link": [
+                {
+                    "title": "1080p",
+                    "url": "http://5.182.229.90:8080/7350/tracks-v1a1/mono.m3u8",
+                    "description": ""
+                }
+            ]
+        },
+        {
+            "name": "stv2",
+            "title": "STV 2",
+            "link": [
+                {
+                    "title": "1080p",
+                    "url": "http://5.182.229.90:8080/7351/tracks-v1a1/mono.m3u8",
+                    "description": ""
+                }
+            ]
+        },
+        {
+            "name": "stv-barn",
+            "title": "STV Barn",
+            "link": [
+                {
+                    "title": "720p",
+                    "url": "http://5.182.229.90:8080/7352/tracks-v1a1/mono.m3u8",
+                    "description": ""
+                }
+            ]
+        }
+    ]
 }
