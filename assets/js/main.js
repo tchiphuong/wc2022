@@ -58,9 +58,8 @@ class WorldCup {
                         element.Home.Score !== null;
                     $("#fixtures").append(`
                         <li class="relative">
-                            <button data-dropdown-toggle="${element.IdMatch}"
-                                class="text-white w-full h-full font-medium rounded-lg text-sm text-center inline-flex items-center text-gray-800 border-gray-200 rounded-t-xl dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800"
-                                type="button">
+                            <a href="/match/index.html?id=${element.IdMatch}"
+                                class="text-white w-full h-full font-medium rounded-lg text-sm text-center inline-flex items-center text-gray-800 border-gray-200 rounded-t-xl dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800">
                                 <div
                                     class="block w-full h-full p-6 pt-0 bg-white border border-gray-200 rounded-lg shadow-md relative hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
                                     <div class="text-lg my-4 pb-2 border-b-2 dark:border-gray-700 dark:text-gray-100">${
@@ -85,24 +84,27 @@ class WorldCup {
                                                     : ""
                                             }</span>
                                         </div>
-                                        
                                         ${
-                                            isStarted
+                                            element.MatchStatus === 0 || element.MatchStatus === 3
                                                 ? `<div class="flex-grow flex items-center justify-center">
-                                            <span class="md:text-lg lg:text-2xl text-3xl p-1">${element.Home.Score}</span>
-                                            <span class="md:text-lg lg:text-2xl text-3xl p-1">-</span>
-                                            <span class="md:text-lg lg:text-2xl text-3xl p-1">${element.Away.Score}</span>
-                                        </div>`
-                                                : `<div class="flex-grow flex flex-col items-center justify-center">
-                                        <span class="text-lg p-1 pb-0">${moment(
-                                            element.Date
-                                        ).format("L")}</span>
-                                        <span class="text-md p-1">${moment(element.Date).format(
-                                            "LT"
-                                        )}</span>
-                                    </div>`
+                                                        <span class="md:text-lg lg:text-2xl text-3xl p-1">${element.Home.Score}</span>
+                                                        <span class="md:text-lg lg:text-2xl text-3xl p-1">-</span>
+                                                        <span class="md:text-lg lg:text-2xl text-3xl p-1">${element.Away.Score}</span>
+                                                    </div>`
+                                                : ""
                                         }
-                                        
+                                        ${
+                                            element.MatchStatus === 1
+                                                ? `<div class="flex-grow flex flex-col items-center justify-center">
+                                                        <span class="text-lg p-1 pb-0">${moment(
+                                                            element.Date
+                                                        ).format("L")}</span>
+                                                        <span class="text-md p-1">${moment(
+                                                            element.Date
+                                                        ).format("LT")}</span>
+                                                    </div>`
+                                                : ""
+                                        }
                                         <div class="w-4/12 flex flex-col items-center">
                                             <img class="md:h-8 h-10 border border-yellow-500" src="${
                                                 element.Away !== null
@@ -120,33 +122,13 @@ class WorldCup {
                                             }</span>
                                         </div>
                                     </div>
-                                    ${
-                                        isStarted
-                                            ? '<a href="./live" class="bg-red-100 text-red-800 text-xs font-semibold mr-2 px-2.5 py-0.5 top-4 left-3 rounded dark:bg-red-200 dark:text-red-900 absolute">LIVE</a>'
-                                            : ""
-                                    }
-                                    
                                 </div>
-                            </button>
-                            <div id="${element.IdMatch}"
-                                class="hidden z-10 inset-x-0 w-auto bg-white rounded-lg w-full divide-y divide-gray-100 shadow dark:bg-gray-700">
-                                <div class="p-5 text-gray-700 dark:text-gray-200">
-                                    <div>
-                                        <h1 class="uppercase text-center">Line up</h1>
-                                        <div class="flex h-20">
-                                            <div class="w-1/2"></div>
-                                            <div class="w-1/2"></div>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <h1 class="uppercase text-center">substitute</h1>
-                                        <div class="flex h-20">
-                                            <div class="w-1/2"></div>
-                                            <div class="w-1/2"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            </a>
+                            ${
+                                element.MatchStatus === 3
+                                    ? '<a href="./live" class="text-xs text-red-600 flex items-center font-semibold mr-2 p-0.5 top-4 left-3 h-6 rounded dark:bg-red-200 dark:text-red-900 absolute"><img class="h-6 mr-1" src="./assets/img/live.gif" alt="">LIVE</a>'
+                                    : ""
+                            }
                         </li>
                     `);
                 });
@@ -332,7 +314,8 @@ class WorldCup {
                         element.PlayerPicture.PictureUrl != null
                             ? `${element.PlayerPicture.PictureUrl}?io=transform:fill,width:256,height:128`
                             : "./assets/img/player.png";
-                    $("#list-squad").append(`
+                    if (element.PositionLocalized[0].Description === "Goalkeeper") {
+                        $("#list-squad").append(`
                         <li class="flex flex-col border-2 border-${color}-500 rounded-lg shadow hover:bg-gray-100 dark:text-gray-100 dark:bg-gray-800 dark:hover:bg-gray-700">
                             <div class="relative flex justify-center">
                                 <span class="absolute md:text-2xl top-1 left-1 md:top-2 md:left-2">${
@@ -345,6 +328,73 @@ class WorldCup {
                             <div class="flex items-center justify-center h-full text-xs text-center capitalize">${element.ShortName[0].Description.toLowerCase()}</div>
                         </li>
                     `);
+                    }
+                });
+                response.Players.forEach((element) => {
+                    const color = listColor[element.PositionLocalized[0].Description];
+                    const imgPlayer =
+                        element.PlayerPicture.PictureUrl != null
+                            ? `${element.PlayerPicture.PictureUrl}?io=transform:fill,width:256,height:128`
+                            : "./assets/img/player.png";
+                    if (element.PositionLocalized[0].Description === "Defender") {
+                        $("#list-squad").append(`
+                        <li class="flex flex-col border-2 border-${color}-500 rounded-lg shadow hover:bg-gray-100 dark:text-gray-100 dark:bg-gray-800 dark:hover:bg-gray-700">
+                            <div class="relative flex justify-center">
+                                <span class="absolute md:text-2xl top-1 left-1 md:top-2 md:left-2">${
+                                    element.JerseyNum
+                                }</span>
+                                <img class="right-0 object-cover h-20"
+                                    src="${imgPlayer}"
+                                    alt="${element.ShortName[0].Description.toLowerCase()}" style="aspect-ratio: 1/1;">
+                            </div>
+                            <div class="flex items-center justify-center h-full text-xs text-center capitalize">${element.ShortName[0].Description.toLowerCase()}</div>
+                        </li>
+                    `);
+                    }
+                });
+                response.Players.forEach((element) => {
+                    const color = listColor[element.PositionLocalized[0].Description];
+                    const imgPlayer =
+                        element.PlayerPicture.PictureUrl != null
+                            ? `${element.PlayerPicture.PictureUrl}?io=transform:fill,width:256,height:128`
+                            : "./assets/img/player.png";
+                    if (element.PositionLocalized[0].Description === "Midfielder") {
+                        $("#list-squad").append(`
+                        <li class="flex flex-col border-2 border-${color}-500 rounded-lg shadow hover:bg-gray-100 dark:text-gray-100 dark:bg-gray-800 dark:hover:bg-gray-700">
+                            <div class="relative flex justify-center">
+                                <span class="absolute md:text-2xl top-1 left-1 md:top-2 md:left-2">${
+                                    element.JerseyNum
+                                }</span>
+                                <img class="right-0 object-cover h-20"
+                                    src="${imgPlayer}"
+                                    alt="${element.ShortName[0].Description.toLowerCase()}" style="aspect-ratio: 1/1;">
+                            </div>
+                            <div class="flex items-center justify-center h-full text-xs text-center capitalize">${element.ShortName[0].Description.toLowerCase()}</div>
+                        </li>
+                    `);
+                    }
+                });
+                response.Players.forEach((element) => {
+                    const color = listColor[element.PositionLocalized[0].Description];
+                    const imgPlayer =
+                        element.PlayerPicture.PictureUrl != null
+                            ? `${element.PlayerPicture.PictureUrl}?io=transform:fill,width:256,height:128`
+                            : "./assets/img/player.png";
+                    if (element.PositionLocalized[0].Description === "Forward") {
+                        $("#list-squad").append(`
+                        <li class="flex flex-col border-2 border-${color}-500 rounded-lg shadow hover:bg-gray-100 dark:text-gray-100 dark:bg-gray-800 dark:hover:bg-gray-700">
+                            <div class="relative flex justify-center">
+                                <span class="absolute md:text-2xl top-1 left-1 md:top-2 md:left-2">${
+                                    element.JerseyNum
+                                }</span>
+                                <img class="right-0 object-cover h-20"
+                                    src="${imgPlayer}"
+                                    alt="${element.ShortName[0].Description.toLowerCase()}" style="aspect-ratio: 1/1;">
+                            </div>
+                            <div class="flex items-center justify-center h-full text-xs text-center capitalize">${element.ShortName[0].Description.toLowerCase()}</div>
+                        </li>
+                    `);
+                    }
                 });
             },
         });

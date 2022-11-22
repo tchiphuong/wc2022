@@ -66,6 +66,7 @@ $(function () {
             if (element.name === id) {
                 streamUrl = element.link[0].url;
                 $("#channel-title").text(`LIVE | ${element.title}`);
+                $("#current-channel").text(`${element.title}`);
                 element.link.forEach((sub_element) => {
                     $("#list-quality").append(`
                     <li>

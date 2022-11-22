@@ -28,7 +28,7 @@
         "description": ""
     },
     "match": {
-        "url": "https://api.fifa.com/api/v3/calendar/17/255711/400235458?language=en",
+        "url": "https://api.fifa.com/api/v3/live/football/17/255711/285063/",
         "description": ""
     },
     "team": {

@@ -1,9 +1,17 @@
 $(function () {
     $(document).ajaxStart(function () {
-        $("#spin").show();
+        ShowLoading();
     });
 
     $(document).ajaxComplete(function () {
-        $("#spin").hide();
+        CloseLoading();
     });
 });
+
+function ShowLoading() {
+    $("#spin").show();
+}
+
+function CloseLoading() {
+    $("#spin").hide();
+}
