@@ -12,7 +12,7 @@
         "description": ""
     },
     "matchday": {
-        "url": "https://cxm-api.fifa.com/fifaplusweb/api/sections/matches/competitionslist/3jlHZVPUI0eeeBFTX9qSZ1?locale=en&date=2022-08-20&timezoneoffset=-420",
+        "url": "https://api.fifa.com/api/v3/live/football/17/255711/285063/400128082?language=en",
         "description": ""
     },
     "live": {
@@ -42,8 +42,21 @@
     },
     "channel": [
         {
+            "name": "vtv1",
+            "title": "VTV1",
+            "isShow": true,
+            "link": [
+                {
+                    "title": "1080p",
+                    "url": "https://vips-livecdn.fptplay.net/hda1/vtv1hd_hls.smil/chunklist_b2500000.m3u8",
+                    "description": ""
+                }
+            ]
+        },
+        {
             "name": "vtv2",
             "title": "VTV2",
+            "isShow": true,
             "link": [
                 {
                     "title": "1080p",
@@ -60,6 +73,7 @@
         {
             "name": "vtv3",
             "title": "VTV3",
+            "isShow": true,
             "link": [
                 {
                     "title": "1080p",
@@ -74,8 +88,21 @@
             ]
         },
         {
+            "name": "vtv4",
+            "title": "VTV4",
+            "isShow": true,
+            "link": [
+                {
+                    "title": "1080p",
+                    "url": "https://vips-livecdn.fptplay.net/hda1/vtv4_vhls.smil/chunklist_b5000000.m3u8?token=",
+                    "description": ""
+                }
+            ]
+        },
+        {
             "name": "vtv5",
             "title": "VTV5",
+            "isShow": true,
             "link": [
                 {
                     "title": "1080p",
@@ -92,6 +119,7 @@
         {
             "name": "vtv-can-tho",
             "title": "VTV Can Tho",
+            "isShow": true,
             "link": [
                 {
                     "title": "1080p",
@@ -106,12 +134,37 @@
             ]
         },
         {
-            "name": "tvp-1",
-            "title": "TVP 1",
+            "name": "vtv7",
+            "title": "VTV7",
+            "isShow": true,
             "link": [
                 {
                     "title": "1080p",
-                    "url": "http://5.182.229.90:8080/7292/tracks-v1a1/mono.m3u8",
+                    "url": "https://vips-livecdn.fptplay.net/hda3/vtv7hd_vhls.smil/chunklist_b5000000.m3u8?token=",
+                    "description": ""
+                }
+            ]
+        },
+        {
+            "name": "vtv8",
+            "title": "VTV8",
+            "isShow": true,
+            "link": [
+                {
+                    "title": "1080p",
+                    "url": "https://vips-livecdn.fptplay.net/hda2/vtv8hd_vhls.smil/chunklist_b5000000.m3u8?token=",
+                    "description": ""
+                }
+            ]
+        },
+        {
+            "name": "vtv9",
+            "title": "VTV9",
+            "isShow": true,
+            "link": [
+                {
+                    "title": "1080p",
+                    "url": "https://vips-livecdn.fptplay.net/hda2/vtv9_vhls.smil/chunklist_b5000000.m3u8?token=",
                     "description": ""
                 }
             ]
@@ -119,6 +172,7 @@
         {
             "name": "tvp-2",
             "title": "TVP 2",
+            "isShow": false,
             "link": [
                 {
                     "title": "1080p",
@@ -130,6 +184,7 @@
         {
             "name": "tvp-3",
             "title": "TVP 3",
+            "isShow": false,
             "link": [
                 {
                     "title": "1080p",
@@ -141,6 +196,7 @@
         {
             "name": "tvp-sport",
             "title": "TVP Sport",
+            "isShow": false,
             "link": [
                 {
                     "title": "1080p",
@@ -152,6 +208,7 @@
         {
             "name": "stv1",
             "title": "STV 1",
+            "isShow": false,
             "link": [
                 {
                     "title": "1080p",
@@ -163,6 +220,7 @@
         {
             "name": "stv2",
             "title": "STV 2",
+            "isShow": false,
             "link": [
                 {
                     "title": "1080p",
@@ -174,6 +232,7 @@
         {
             "name": "stv-barn",
             "title": "STV Barn",
+            "isShow": false,
             "link": [
                 {
                     "title": "720p",
