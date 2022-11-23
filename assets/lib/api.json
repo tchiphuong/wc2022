@@ -170,13 +170,13 @@
             ]
         },
         {
-            "name": "tvp-2",
-            "title": "TVP 2",
-            "isShow": false,
+            "name": "true-sport-2",
+            "title": "True Sport 2",
+            "isShow": true,
             "link": [
                 {
-                    "title": "1080p",
-                    "url": "http://5.182.229.90:8080/7293/tracks-v1a1/mono.m3u8",
+                    "title": "720p",
+                    "url": "https://sport.livedoomovies.com:4431/02_2sporthd2_720p/chunklist.m3u8",
                     "description": ""
                 }
             ]
