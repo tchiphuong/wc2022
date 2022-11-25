@@ -136,7 +136,9 @@ $(function () {
             response.HomeTeam.Players.forEach((element) => {
                 if (element.Status == 1) {
                     $("#lineup-home").append(`
-                        <li class="relative flex items-center justify-end w-full p-2 m-1 bg-gray-100 rounded-lg cursor-pointer hover:bg-gray-200">
+                        <li class="relative flex items-center justify-end w-full p-2 m-1 bg-gray-100 rounded-lg cursor-pointer hover:bg-gray-200 ${
+                            element.Captain ? "border-2 border-yellow-500" : ""
+                        }">
                             <span class="z-10 p-3 capitalize">${element.ShortName[0].Description.toLowerCase()}</span>
                             <img class="hidden object-cover w-16 h-16 border-2 rounded-full md:inline-block"
                                 src="${
@@ -171,7 +173,9 @@ $(function () {
             response.AwayTeam.Players.forEach((element) => {
                 if (element.Status == 1) {
                     $("#lineup-away").append(`
-                    <li class="relative flex items-center justify-start w-full p-2 m-1 bg-gray-100 rounded-lg cursor-pointer hover:bg-gray-200">
+                    <li class="relative flex items-center justify-start w-full p-2 m-1 bg-gray-100 rounded-lg cursor-pointer hover:bg-gray-200 ${
+                        element.Captain ? "border-2 border-yellow-500" : ""
+                    }">
                         <img class="hidden object-cover w-16 h-16 border-2 rounded-full md:inline-block"
                             src="${
                                 element.PlayerPicture.PictureUrl
