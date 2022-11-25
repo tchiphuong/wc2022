@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="../assets/img/favicon.png" />
+    <title>World Cup 2022</title>
+    <meta property='og:image' content="../assets/img/thumbnail.png" />
+    <meta property="og:url" content="https://tchiphuong.github.io/wc2022" />
+    <meta property="og:type" content="article" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.3/dist/flowbite.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.10/tailwind.min.css" />
+    <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+
+<body>
+    <nav class="bg-gray-50 border-gray-200 px-2 md:px-4 py-2.5 dark:bg-gray-900 fixed w-full z-20">
+        <div class="flex flex-wrap items-center justify-between max-w-screen-xl mx-auto">
+            <a href="../" class="flex items-center">
+                <img src="../assets/img/logo.png" class="h-6 mr-3 sm:h-9" alt="">
+            </a>
+            <div class="flex items-center md:order-2">
+                <button data-collapse-toggle="mega-menu" type="button"
+                    class="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                    aria-controls="mega-menu" aria-expanded="false">
+                    <span class="sr-only">Open main menu</span>
+                    <svg aria-hidden="true" class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                            clip-rule="evenodd"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+    <div class="container px-2 pt-16 mx-auto">
+        <nav class="flex" aria-label="Breadcrumb">
+            <ol class="inline-flex items-center space-x-1 md:space-x-3">
+                <li class="inline-flex items-center">
+                    <a href="../"
+                        class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white">
+                        <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z">
+                            </path>
+                        </svg>
+                        Home
+                    </a>
+                </li>
+                <li>
+                    <div class="flex items-center">
+                        <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                        <a href="#"
+                            class="ml-1 text-sm font-medium text-gray-700 hover:text-gray-900 md:ml-2 dark:text-gray-400 dark:hover:text-white">Match</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="flex items-center">
+                        <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                        <span id="current-match"
+                            class="ml-1 text-sm font-medium text-gray-700 hover:text-gray-900 md:ml-2 dark:text-gray-400 dark:hover:text-white">Live</span>
+                    </div>
+                </li>
+            </ol>
+        </nav>
+        <section id="match" class="mb-4">
+            <!-- <div
+                class="p-3 my-2 bg-white border border-gray-200 rounded-lg shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                <div class="flex items-center justify-center pb-3">
+                    <span>Group B</span>
+                </div>
+                <div class="flex py-2 border border-l-0 border-r-0">
+                    <div class="flex flex-col justify-start w-5/12">
+                        <div class="flex flex-col items-center px-6 md:flex-row-reverse">
+                            <img class="h-16 mx-2" src="https://api.fifa.com/api/v3/picture/flags-sq-4/ESP" alt="">
+                            <div class="px-2 text-lg text-center md:text-right">Spain</div>
+                        </div>
+                    </div>
+                    <div class="flex items-start justify-center w-2/12 py-6 text-2xl">
+                        <span>0</span>
+                        <span class="px-1">-</span>
+                        <span>0</span>
+                    </div>
+                    <div class="flex flex-col justify-start w-5/12">
+                        <div class="flex flex-col items-center px-6 md:flex-row">
+                            <img class="h-16 mx-2" src="https://api.fifa.com/api/v3/picture/flags-sq-4/WAL" alt="">
+                            <div class="px-2 text-lg text-center md:text-left">Wales</div>
+                        </div>
+                    </div>
+                </div>
+                <ul>
+                    <li class="w-full text-right capitalize">
+                        <div class="w-5/12 px-8">messi</div>
+                    </li>
+                    <li class="flex w-full capitalize">
+                        <div class="w-5/12 px-8 ml-7/12" style="margin-left: 58.333333%;">messi</div>
+                    </li>
+                </ul>
+                <div class="items-center justify-center pt-3 md:flex">
+                    <div class="flex items-center justify-center px-4">
+                        <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor"
+                            viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                        <span class="px-2">11/23/2022</span>
+                    </div>
+                    <div class="flex items-center justify-center px-4">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z">
+                            </path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        </svg>
+                        <span class="px-2">Ahmad Bin Ali Stadium</span>
+                    </div>
+                </div>
+            </div> -->
+        </section>
+        <section>
+            <h2 class="text-center">Line up</h2>
+            <div
+                class="flex justify-center py-3 my-2 bg-white border border-gray-200 rounded-lg shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                <div class="w-1/2 px-4 text-right">
+                    <ul id="lineup-home" class="w-full">
+                        <li
+                            class="relative flex items-center justify-end w-full p-2 m-1 bg-gray-100 rounded-lg cursor-pointer hover:bg-gray-200">
+                            <span class="z-10 p-3 capitalize">m. asensio</span>
+                            <img class="hidden object-cover w-16 h-16 border-2 rounded-full md:inline-block"
+                                src="https://digitalhub.fifa.com/transform/a28c5f8b-ef3b-4fb0-9cd3-a59c0c10c8f9/1442551256?io=transform:fill,width:256,height:128"
+                                alt="">
+                            <span
+                                class="absolute top-0 flex items-center text-white capitalize left-2 text-8xl">10</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="w-1/2 px-4">
+                    <ul id="lineup-away" class="w-full">
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section>
+            <h2 class="text-center">Substitutions</h2>
+            <div
+                class="flex justify-center py-3 my-2 bg-white border border-gray-200 rounded-lg shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                <div class="w-1/2 px-4 text-right">
+                    <ul id="sub-home" class="w-full">
+                        <li
+                            class="relative flex items-center justify-end w-full p-2 m-1 bg-gray-100 rounded-lg cursor-pointer hover:bg-gray-200">
+                            <span class="z-10 p-3 capitalize">m. asensio</span>
+                            <img class="hidden object-cover w-16 h-16 border-2 rounded-full md:inline-block"
+                                src="https://digitalhub.fifa.com/transform/a28c5f8b-ef3b-4fb0-9cd3-a59c0c10c8f9/1442551256?io=transform:fill,width:256,height:128"
+                                alt="">
+                            <span
+                                class="absolute top-0 flex items-center text-white capitalize left-2 text-8xl">10</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="w-1/2 px-4">
+                    <ul id="sub-away" class="w-full">
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div class="fixed inset-0 z-30 flex items-center justify-center h-screen bg-white cursor-pointer" id="spin">
+        <div role="status">
+            <svg class="inline w-8 h-8 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+                viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+                    fill="currentColor" />
+                <path
+                    d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+                    fill="currentFill" />
+            </svg>
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://unpkg.com/flowbite@1.5.3/dist/flowbite.js"></script>
+    <script src="../assets/js/ajax.js"></script>
+    <script src="../assets/js/match.js"></script>
+</body>
+
+</html>
