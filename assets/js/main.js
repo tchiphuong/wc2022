@@ -91,11 +91,7 @@ class WorldCup {
                                                         <span class="md:text-lg lg:text-2xl text-3xl p-1">-</span>
                                                         <span class="md:text-lg lg:text-2xl text-3xl p-1">${element.Away.Score}</span>
                                                     </div>`
-                                                : ""
-                                        }
-                                        ${
-                                            element.MatchStatus === 1
-                                                ? `<div class="flex-grow flex flex-col items-center justify-center">
+                                                : `<div class="flex-grow flex flex-col items-center justify-center">
                                                         <span class="text-lg p-1 pb-0">${moment(
                                                             element.Date
                                                         ).format("L")}</span>
@@ -103,7 +99,6 @@ class WorldCup {
                                                             element.Date
                                                         ).format("LT")}</span>
                                                     </div>`
-                                                : ""
                                         }
                                         <div class="w-4/12 flex flex-col items-center">
                                             <img class="md:h-8 h-10 border border-yellow-500" src="${
