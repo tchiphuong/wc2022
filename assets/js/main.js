@@ -58,7 +58,7 @@ class WorldCup {
                         element.Home.Score !== null;
                     $("#fixtures").append(`
                         <li class="relative">
-                            <a href="/match/index.html?id=${element.IdMatch}"
+                            <a href="./match/index.html?id=${element.IdMatch}"
                                 class="text-white w-full h-full font-medium rounded-lg text-sm text-center inline-flex items-center text-gray-800 border-gray-200 rounded-t-xl dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800">
                                 <div
                                     class="block w-full h-full p-6 pt-0 bg-white border border-gray-200 rounded-lg shadow-md relative hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
