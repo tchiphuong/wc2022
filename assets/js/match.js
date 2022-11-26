@@ -1,7 +1,12 @@
 var jsonUrl = "../assets/lib/api.json";
+var matchId = new URLSearchParams(window.location.search).get("id") || "";
+var isLive = false;
+var hasNewGoal = false;
+var goalLength = 0;
+var first = true;
 $(function () {
     var callAPI = function (json) {
-        url = json.match.url.concat("/", new URLSearchParams(window.location.search).get("id"));
+        url = json.match.url.concat("/", matchId);
     };
     $.ajax({
         url: jsonUrl,
@@ -9,12 +14,17 @@ $(function () {
         async: false,
         success: callAPI,
     });
+    GetData();
+});
+function GetData() {
     $.ajax({
         type: "get",
         url: url,
         async: false,
         dataType: "json",
         success: function (response) {
+            isLive = response.MatchStatus == 3;
+            $("#match").empty();
             $("#match").append(`
             <div class="p-3 my-2 bg-white border border-gray-200 rounded-lg shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
                 <div class="flex items-center justify-center pb-3">
@@ -60,8 +70,8 @@ $(function () {
                 </ul>
                 <div class="items-center justify-center pt-3 md:flex">
                     <div class="flex items-center justify-center px-4">
-                        <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor"
-                            viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 20 20" 
+                        xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd"
                                 d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
                                 clip-rule="evenodd"></path>
@@ -104,6 +114,8 @@ $(function () {
                 if (keyA > keyB) return 1;
                 return 0;
             });
+            hasNewGoal = goals.length > goalLength;
+            goalLength = goals.length;
             goals.forEach((element) => {
                 if (element.IsHome) {
                     $("#goals").append(`
@@ -205,6 +217,33 @@ $(function () {
                     `);
                 }
             });
+            if (isLive) {
+                setTimeout(() => {
+                    GetData();
+                }, 1000);
+            }
+            if (hasNewGoal && !first) {
+                function capitalizeFirstLetter(string) {
+                    return string.charAt(0).toUpperCase() + string.slice(1);
+                }
+                const playerName = capitalizeFirstLetter(
+                    response.HomeTeam.Players.find(
+                        (x) => x.IdPlayer == goals[goals.length - 1].IdPlayer
+                    ).ShortName[0].Description.toLowerCase()
+                );
+                const title = goals[goals.length - 1].IsHome
+                    ? `${response.HomeTeam.ShortClubName} [${response.HomeTeam.Score}] - ${response.AwayTeam.Score} ${response.AwayTeam.ShortClubName}`
+                    : `${response.HomeTeam.ShortClubName} ${response.HomeTeam.Score} - [${response.AwayTeam.Score}] ${response.AwayTeam.ShortClubName}`;
+                var notification = new Notification(title, {
+                    icon: "../assets/img/favicon.png",
+                    body: `[${playerName}] has just scored another goal!`,
+                });
+                console.log(`./match/index.html?id=${matchId}`);
+                notification.onclick = function () {
+                    return (location.href = `./index.html?id=${matchId}`);
+                };
+            }
+            first = false;
         },
     });
-});
+}
