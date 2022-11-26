@@ -60,12 +60,12 @@
             "link": [
                 {
                     "title": "1080p",
-                    "url": "https://vips-livecdn.fptplay.net/hda1/vtv2_vhls.smil/chunklist_b5000000.m3u8?token=",
+                    "url": "https://livecdn.fptplay.net/hda1/vtv2_vhls.smil/chunklist_b5000000.m3u8",
                     "description": ""
                 },
                 {
                     "title": "1080p",
-                    "url": "https://livecdn.fptplay.net/hda1/vtv2_vhls.smil/chunklist_b5000000.m3u8",
+                    "url": "https://vips-livecdn.fptplay.net/hda1/vtv2_vhls.smil/chunklist_b5000000.m3u8?token=",
                     "description": ""
                 }
             ]
@@ -77,12 +77,12 @@
             "link": [
                 {
                     "title": "1080p",
-                    "url": "https://vips-livecdn.fptplay.net/hda1/vtv3hd_hls.smil/chunklist_b2500000.m3u8?token=",
+                    "url": "https://livecdn.fptplay.net/hda1/vtv3hd_vhls.smil/chunklist_b5000000.m3u8",
                     "description": ""
                 },
                 {
                     "title": "1080p",
-                    "url": "https://livecdn.fptplay.net/hda1/vtv3hd_vhls.smil/chunklist_b5000000.m3u8",
+                    "url": "https://vips-livecdn.fptplay.net/hda1/vtv3hd_hls.smil/chunklist_b2500000.m3u8?token=",
                     "description": ""
                 }
             ]
@@ -106,12 +106,12 @@
             "link": [
                 {
                     "title": "1080p",
-                    "url": "https://vips-livecdn.fptplay.net/hda2/vtv5hd_vhls.smil/chunklist_b5000000.m3u8?token=",
+                    "url": "https://livecdn.fptplay.net/hda2/vtv5hd_vhls.smil/chunklist_b5000000.m3u8",
                     "description": ""
                 },
                 {
                     "title": "1080p",
-                    "url": "https://livecdn.fptplay.net/hda2/vtv5hd_vhls.smil/chunklist_b5000000.m3u8",
+                    "url": "https://vips-livecdn.fptplay.net/hda2/vtv5hd_vhls.smil/chunklist_b5000000.m3u8?token=",
                     "description": ""
                 }
             ]
@@ -134,7 +134,7 @@
             "isShow": true,
             "link": [
                 {
-                    "title": "1080p",
+                    "title": "720p",
                     "url": "https://nvzoftzsvflivcf.vcdn.com.vn/vtv5tn/vtv5tn@high.m3u8",
                     "description": ""
                 }
@@ -147,12 +147,12 @@
             "link": [
                 {
                     "title": "1080p",
-                    "url": "https://vips-livecdn.fptplay.net/hda1/vtv6hd_vhls.smil/chunklist_b2500000.m3u8?token=",
+                    "url": "https://livecdn.fptplay.net/hda1/vtvcantho_vhls.smil/chunklist_b5000000.m3u8",
                     "description": ""
                 },
                 {
-                    "title": "1080p",
-                    "url": "https://livecdn.fptplay.net/hda1/vtvcantho_vhls.smil/chunklist_b5000000.m3u8",
+                    "title": "720p",
+                    "url": "https://vips-livecdn.fptplay.net/hda1/vtv6hd_vhls.smil/chunklist_b2500000.m3u8?token=",
                     "description": ""
                 }
             ]

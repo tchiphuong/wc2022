@@ -11,12 +11,13 @@
     <meta property="og:url" content="https://tchiphuong.github.io/wc2022" />
     <meta property="og:type" content="article" />
     <meta property="og:image:type" content="image/jpeg" />
-    <link href="https://unpkg.com/video.js/dist/video-js.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.5.2/plyr.css">
     <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.3/dist/flowbite.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.10/tailwind.min.css" />
-    <script src="https://unpkg.com/video.js/dist/video.js"></script>
-    <script src="https://unpkg.com/videojs-contrib-hls/dist/videojs-contrib-hls.js"></script>
     <link rel="stylesheet" href="../assets/css/styles.css">
+    <script src="https://cdn.plyr.io/3.7.3/plyr.polyfilled.js"></script>
+    <script src="https://cdn.plyr.io/3.5.2/plyr.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 </head>
 
 <body>
@@ -105,12 +106,7 @@
         <section id="group" class="mb-4">
             <h1 id="channel-title" class="px-1 py-2 text-2xl font-bold"></h1>
             <ul id="video">
-                <video id="stream" class="w-full overflow-hidden rounded-lg video-js vjs-default-skin" controls
-                    preload=" auto" height="600" style="max-height: min-content; aspect-ratio: 16/9;" data-setup='{}'>
-                    <source id="stream-source"
-                        src="https://livecdn.fptplay.net/hda1/vtv3hd_vhls.smil/chunklist_b5000000.m3u8"
-                        type="application/x-mpegURL">
-                </video>
+                <video controls crossorigin autoplay id="player">
             </ul>
             <ul id="list-quality" class="flex py-3">
                 <li>

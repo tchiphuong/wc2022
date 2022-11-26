@@ -39,7 +39,6 @@ $(function () {
     $(".channel-item").on("click", function () {
         const id = $(this).attr("id");
         $("#list-quality").empty();
-        var video = videojs("stream");
         let streamUrl = lstChannel[0].link[0].url;
 
         $(this)
@@ -78,15 +77,32 @@ $(function () {
                 });
             }
         });
-
-        video.src(streamUrl);
-        video.play();
+        Play(streamUrl);
 
         $(".quality-item").click(function () {
             streamUrl = $(this).attr("stream-url");
-            video.src(streamUrl);
-            video.play();
+            Play(streamUrl);
         });
     });
     $($("#list-channels").find("button")[0]).trigger("click");
 });
+
+function Play(streamUrl) {
+    var video = document.getElementById("player");
+    new Plyr("#player");
+    if (Hls.isSupported()) {
+        var hls = new Hls();
+        hls.loadSource(streamUrl);
+        hls.attachMedia(video);
+        hls.on(Hls.Events.MANIFEST_PARSED, function () {
+            video.play();
+        });
+    } else if (video.canPlayType("application/vnd.apple.mpegurl")) {
+        video.src = streamUrl;
+        video.addEventListener("loadedmetadata", function () {
+            video.play();
+        });
+    }
+    video.play(); // Start playback
+    video.fullscreen.enter(); // Enter fullscreen
+}
