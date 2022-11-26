@@ -103,6 +103,4 @@ function Play(streamUrl) {
             video.play();
         });
     }
-    video.play(); // Start playback
-    video.fullscreen.enter(); // Enter fullscreen
 }
