@@ -24,6 +24,9 @@ function GetData() {
         dataType: "json",
         success: function (response) {
             isLive = response.MatchStatus == 3;
+            $("#current-match").text(
+                response.HomeTeam.ShortClubName + " - " + response.AwayTeam.ShortClubName
+            );
             $("#match").empty();
             $("#match").append(`
             <div class="p-3 my-2 bg-white border border-gray-200 rounded-lg shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
@@ -222,28 +225,33 @@ function GetData() {
                     GetData();
                 }, 1000);
             }
-            if (hasNewGoal && !first) {
-                function capitalizeFirstLetter(string) {
-                    return string.charAt(0).toUpperCase() + string.slice(1);
-                }
-                const playerName = capitalizeFirstLetter(
-                    response.HomeTeam.Players.find(
-                        (x) => x.IdPlayer == goals[goals.length - 1].IdPlayer
-                    ).ShortName[0].Description.toLowerCase()
-                );
-                const title = goals[goals.length - 1].IsHome
-                    ? `${response.HomeTeam.ShortClubName} [${response.HomeTeam.Score}] - ${response.AwayTeam.Score} ${response.AwayTeam.ShortClubName}`
-                    : `${response.HomeTeam.ShortClubName} ${response.HomeTeam.Score} - [${response.AwayTeam.Score}] ${response.AwayTeam.ShortClubName}`;
-                var notification = new Notification(title, {
-                    icon: "../assets/img/favicon.png",
-                    body: `[${playerName}] has just scored another goal!`,
-                });
-                console.log(`./match/index.html?id=${matchId}`);
-                notification.onclick = function () {
-                    return (location.href = `./index.html?id=${matchId}`);
-                };
+            if (Number(moment().format("ss")) % 5) {
+                SendNotification(response, goals);
             }
             first = false;
         },
     });
+}
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+function SendNotification(response, goals) {
+    if (goals.length > 0) {
+        const playerName = capitalizeFirstLetter(
+            response.HomeTeam.Players.find(
+                (x) => x.IdPlayer == goals[goals.length - 1].IdPlayer
+            ).ShortName[0].Description.toLowerCase()
+        );
+        const title = goals[goals.length - 1].IsHome
+            ? `${response.HomeTeam.ShortClubName} [${response.HomeTeam.Score}] - ${response.AwayTeam.Score} ${response.AwayTeam.ShortClubName}`
+            : `${response.HomeTeam.ShortClubName} ${response.HomeTeam.Score} - [${response.AwayTeam.Score}] ${response.AwayTeam.ShortClubName}`;
+        var notification = new Notification(title, {
+            icon: "../assets/img/favicon.png",
+            body: `[${playerName}] has just scored another goal!`,
+        });
+        notification.onclick = function () {
+            return (location.href = `./index.html?id=${matchId}`);
+        };
+    }
 }
