@@ -225,7 +225,7 @@ function GetData() {
                     GetData();
                 }, 1000);
             }
-            if (Number(moment().format("ss")) % 5) {
+            if (hasNewGoal && !first) {
                 SendNotification(response, goals);
             }
             first = false;
